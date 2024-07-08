@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperação</title>
+    <style>
+        #passwordSection {
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        #content {
+            padding: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <section id="passwordSection">
+        <h2>Insira a senha para acessar o site</h2>
+        <input type="password" id="passwordInput" placeholder="Digite a senha">
+        <button id="getPasswordButton">Obter Senha</button>
+        <button id="checkPasswordButton" style="margin-left: 10px; display: none;">Verificar Senha</button>
+    </section>
+
+    <div id="content">
+        <h1>Desbloquear Site</h1>
+        <input type="text" id="codeInput" placeholder="Digite o código de 10 dígitos">
+        <button id="recoButton">Desbloquear</button>
+        <div id="blockedUsersContainer"></div>
+    </div>
+<script type="module" src="script2.js"></script>
+</body>
+</html>

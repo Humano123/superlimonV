@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superlimon V</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            background-color: chocolate;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const player = {
+            x: canvas.width / 2,
+            y: canvas.height - 60,
+            width: 50,
+            height: 50,
+            speed: 10,
+            vy: 0,
+            gravity: 0.8,
+            jumpStrength: 15,
+            onGround: false,
+            image: new Image()
+        };
+
+        player.image.src = 'playerB.png';
+
+        const blocks = [
+            { x: 100, y: 500, width: 200, height: 20, color: 'black', text: 'Bata a cabeça aqui' },
+            { x: 400, y: 400, width: 200, height: 20, color: 'black', text: 'Bata a cabeça aqui' },
+            { x: 700, y: 300, width: 100, height: 20, color: 'Green', isSpecial: true, text: 'Pule aqui' }
+        ];
+
+        let keys = {};
+
+        function drawPlayer() {
+            ctx.drawImage(player.image, player.x, player.y, player.width, player.height);
+        }
+
+        function drawBlocks() {
+            blocks.forEach(block => {
+                ctx.fillStyle = block.color;
+                ctx.fillRect(block.x, block.y, block.width, block.height);
+                ctx.fillStyle = 'black';
+                ctx.font = '16px Arial';
+                ctx.textAlign = 'center';
+                if (block.color === 'Green') {
+                    ctx.fillText(block.text, block.x + block.width / 2, block.y - 10);
+                } else {
+                    ctx.fillText(block.text, block.x + block.width / 2, block.y + block.height + 20);
+                }
+            });
+        }
+
+        function checkCollisions() {
+            player.onGround = false;
+
+            blocks.forEach(block => {
+                if (player.x < block.x + block.width &&
+                    player.x + player.width > block.x &&
+                    player.y < block.y + block.height &&
+                    player.y + player.height > block.y) {
+
+                    if (block.isSpecial) {
+                        window.location.href = 'mapas.html';
+                    } else {
+                        player.y = block.y - player.height;
+                        player.vy = 0;
+                        player.onGround = true;
+                    }
+                }
+            });
+        }
+
+        function updatePlayerPosition() {
+            if (keys['ArrowLeft'] || keys['a']) {
+                player.x -= player.speed;
+                if (player.x < 0) player.x = 0; // Prevent moving out of bounds
+            }
+            if (keys['ArrowRight'] || keys['d']) {
+                player.x += player.speed;
+                if (player.x + player.width > canvas.width) player.x = canvas.width - player.width; // Prevent moving out of bounds
+            }
+            if (keys[' '] && player.onGround) {
+                player.vy = -player.jumpStrength;
+                player.onGround = false;
+            }
+
+            player.y += player.vy;
+            player.vy += player.gravity;
+
+            // Check for collisions with blocks
+            checkCollisions();
+
+            // Check for landing on the ground
+            if (player.y + player.height > canvas.height) {
+                player.y = canvas.height - player.height;
+                player.vy = 0;
+                player.onGround = true;
+            }
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+            drawBlocks();
+            drawPlayer();
+            requestAnimationFrame(updatePlayerPosition);
+        }
+
+        document.addEventListener('keydown', (event) => {
+            keys[event.key] = true;
+        });
+
+        document.addEventListener('keyup', (event) => {
+            keys[event.key] = false;
+        });
+
+        player.image.onload = () => {
+            drawBlocks();
+            drawPlayer(); // Draw the player when the image has loaded
+            updatePlayerPosition(); // Start the game loop
+        };
+
+    </script>
+</body>
+</html>

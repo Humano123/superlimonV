@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superlimon V</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-image: url("fundo.jpg"); /* Substitua pelo caminho da sua imagem */
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        .mapas1{
+            background-color: rgba(240, 248, 255, 0.505);
+            height: 10vh;
+        }
+        .dentro{
+            display: flex;
+            justify-content: space-around;
+        }
+        .bota{
+            background-color: yellow;
+            border-color: rgb(69, 51, 51);
+            border: 1;
+            border-radius: 0.5vh;
+            scale: 2;
+            margin-top: 2vh;
+            transition: transform 0.2s ease-in-out;
+        }
+        .bota:hover{
+            background-color: rgb(208, 208, 0);
+            cursor: pointer;
+        }
+        .bota:active{
+            transform: scale(0.5);
+            cursor: progress;
+        }
+        .d{
+            display: flex;
+        }
+        nav{
+            background-color: black;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="navv">
+        <div class="d"><a href="index.html"><img src="logo.png" width="100" ondragstart="return false"></a>
+        <h1 class="ti">Superlimon</h1></div>
+        <div class="a"><h3>VERSÃO BETA (1)</h3></div>
+    </div>
+    </nav>
+    <section class="mapas1">
+    <div class="mapas">
+        <div class="dentro">
+    <div class="jogos"><a href="jogo1.html"><input class="bota" type="button" value="Jogo classico"></a></div>
+    <div class="jogos"><a href="jogo2.html"><input class="bota" type="button" value="Jogo classico 2"></a></div>
+    <div class="jogos"><a href="jogo3.html"><input class="bota" type="button" value="noque"></a></div>
+    </div>
+    </div>
+</section>
+</body>
+</html>
