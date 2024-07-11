@@ -105,6 +105,11 @@
                 player.onGround = false;
                 player.jumping = true;
             }
+            if (keys['w'] && player.onGround) {
+                player.vy = -player.jumpStrength;
+                player.onGround = false;
+                player.jumping = true;
+            }
 
             player.y += player.vy;
             player.vy += player.gravity;

@@ -17,7 +17,7 @@
             padding: 0;
         }
         body {
-            background-image: url("fundo.jpg"); /* Substitua pelo caminho da sua imagem */
+            background-image: url("fundo.png"); /* Substitua pelo caminho da sua imagem */
             background-size: 100% 100%;
             background-repeat: no-repeat;
             background-position: center center;
@@ -26,18 +26,47 @@
             background-color: rgba(240, 248, 255, 0.505);
             height: 10vh;
         }
-        .dentro{
-            display: flex;
-            justify-content: space-around;
-        }
+        .dentrod{
+display: flex;
+justify-content: space-around;
+margin-block: 1vh;
+}
+.mapas{
+    background-color: #1d1d1d8e;
+    border-radius: 0.3vh;
+    width: auto;
+    height: 100vh;
+    margin: auto;
+    width: 100%;
+    overflow: auto;
+    max-height: 100px;
+}
+.mapas::-webkit-scrollbar {
+    width: 20px;
+}
+.mapas::-webkit-scrollbar-track {
+    background: rgb(63, 63, 63);
+}
+.mapas::-webkit-scrollbar-track:hover {
+    cursor: pointer;
+}
+.mapas::-webkit-scrollbar-thumb {
+    background-color: rgb(148, 163, 14);
+    border-radius: 6px;
+    border: 3px solid rgb(36, 94, 21);
+    cursor: grab;
+}
+.mapas::-webkit-scrollbar-thumb:active {
+    cursor: grabbing;
+}
         .bota{
             background-color: yellow;
             border-color: rgb(69, 51, 51);
             border: 1;
             border-radius: 0.5vh;
-            scale: 2;
             margin-top: 2vh;
             transition: transform 0.2s ease-in-out;
+            font-size: 5vh;
         }
         .bota:hover{
             background-color: rgb(208, 208, 0);
@@ -54,24 +83,33 @@
             background-color: black;
             color: aliceblue;
         }
+        section{
+            background-color: rgba(240, 248, 255, 0.707);
+            width: auto;
+        }
     </style>
 </head>
 <body>
     <nav>
         <div class="navv">
         <div class="d"><a href="index.html"><img src="logo.png" width="100" ondragstart="return false"></a>
-        <h1 class="ti">Superlimon</h1></div>
-        <div class="a"><h3>VERSÃO BETA (1)</h3></div>
+        <h1 class="ti">Superlimon V</h1></div>
+        <div class="a"><h3>VERSÃO BETA (1.5)</h3></div>
     </div>
     </nav>
-    <section class="mapas1">
+<section>
     <div class="mapas">
-        <div class="dentro">
-    <div class="jogos"><a href="jogo1.html"><input class="bota" type="button" value="Jogo classico"></a></div>
-    <div class="jogos"><a href="jogo2.html"><input class="bota" type="button" value="Jogo classico 2"></a></div>
-    <div class="jogos"><a href="jogo3.html"><input class="bota" type="button" value="noque"></a></div>
+        <div class="dentrod">
+            <a href="jogo1.html"><input class="bota" type="button" value="Classico"></a>
+            <a href="jogo2.html"><input class="bota" type="button" value="Basico"></a>
+            <a href="jogo3.html"><input class="bota" type="button" value="Noque"></a>
+        </div>
+        <br>
+        <div class="dentrod">
+            <a href="jogo4.html"><input class="bota" type="button" value="Dificil"></a>
+        </div>
     </div>
-    </div>
+</section>
 </section>
 </body>
 </html>

@@ -13,6 +13,7 @@
 </head>
 <body>
     <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <p>Está com dificuldade de aprender a jogar? consulte um <a href="guia.html">guia</a>!</p>
     <script>
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
@@ -91,6 +92,12 @@
             if (keys[' '] && player.onGround) {
                 player.vy = -player.jumpStrength;
                 player.onGround = false;
+                player.jumping = true;
+            }
+            if (keys['w'] && player.onGround) {
+                player.vy = -player.jumpStrength;
+                player.onGround = false;
+                player.jumping = true;
             }
 
             player.y += player.vy;

@@ -88,9 +88,15 @@ function updatePlayerPosition() {
         if (player.x + player.width > canvas.width) player.x = canvas.width - player.width; // Prevent moving out of bounds
     }
     if (keys[' '] && player.onGround) {
-        player.vy = -player.jumpStrength;
-        player.onGround = false;
-    }
+                player.vy = -player.jumpStrength;
+                player.onGround = false;
+                player.jumping = true;
+            }
+            if (keys['w'] && player.onGround) {
+                player.vy = -player.jumpStrength;
+                player.onGround = false;
+                player.jumping = true;
+            }
 
     player.y += player.vy;
     player.vy += player.gravity;
